@@ -1,18 +1,14 @@
 package com.twu.biblioteca;
 
-public class BibliotecaApp {
+import java.util.Scanner;
 
+public class BibliotecaApp {
+    private static Menu menu = new Menu();
     public static void main(String[] args) {
         System.out.println("\n------------------ Welcome to Biblioteca - Bangalore Public Library ------------------");
 
-        ShowMenu();
+        menu.showMenu();
     }
 
-    private static void ShowMenu(){
-        System.out.println("\nPlease choose one of the options in the menu below by typing its number:");
-        System.out.println("1 - List Books");
-        System.out.println("2 - Checkout BookController");
-        System.out.println("3 - Return BookController");
-        System.out.println("4 - Quit");
-    }
+
 }

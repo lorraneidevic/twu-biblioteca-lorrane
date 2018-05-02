@@ -21,7 +21,7 @@ public class BookController {
         int index = books.indexOf(book);
 
         if(books.get(index).isBooked()){
-            throw new BookReservationException("This book is already booked.");
+            throw new BookReservationException("That book is not available");
         } else {
             books.get(index).book();
         }
@@ -33,7 +33,7 @@ public class BookController {
         if(books.get(index).isBooked()){
             books.get(index).unbook();
         } else {
-            throw new BookReservationException("This book is not booked to be returned.");
+            throw new BookReservationException("That is not a valid book to return");
         }
     }
 
