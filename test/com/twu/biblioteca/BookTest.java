@@ -9,7 +9,7 @@ public class BookTest {
     @Test
     public void shouldReturnTheBookName() {
         //arrange
-        Book book = new Book("Wonder");
+        Book book = new Book("Wonder", "R.J. Palacio", 2012);
 
         //action
         String bookName = book.getName();
@@ -21,7 +21,7 @@ public class BookTest {
     @Test
     public void shouldNotBeBookedWhenCreated() {
         //arrange
-        Book book = new Book("Wonder");
+        Book book = new Book("Wonder", "R.J. Palacio", 2012);
 
         //action
         boolean bookStatus = book.isBooked();
@@ -33,7 +33,7 @@ public class BookTest {
     @Test
     public void shouldBookABook() {
         //arrange
-        Book book = new Book("Wonder");
+        Book book = new Book("Wonder", "R.J. Palacio", 2012);
 
         //action
         book.book();
@@ -45,7 +45,7 @@ public class BookTest {
     @Test
     public void shouldUnbookABook() {
         //arrange
-        Book book = new Book("Wonder");
+        Book book = new Book("Wonder", "R.J. Palacio", 2012);
         book.book();
 
         //action
@@ -53,5 +53,17 @@ public class BookTest {
 
         //assert
         assertEquals(false, book.isBooked());
+    }
+
+    @Test
+    public void shouldReturnTheBookDetails() {
+        //arrange
+        Book book = new Book("Wonder", "R.J. Palacio", 2012);
+
+        //action
+        String bookDetails = book.getDetails();
+
+        //assert
+        assertEquals("Wonder - R.J. Palacio - 2012", bookDetails);
     }
 }

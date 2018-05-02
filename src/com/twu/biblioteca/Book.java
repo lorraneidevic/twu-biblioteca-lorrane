@@ -2,14 +2,22 @@ package com.twu.biblioteca;
 
 public class Book {
     private String name;
+    private String author;
+    private int year;
     private boolean booked = false;
 
-    public Book(String name) {
+    public Book(String name, String author, int year) {
         this.name = name;
+        this.author = author;
+        this.year = year;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getDetails() {
+        return name + " - " + author + " - " + year;
     }
 
     public boolean isBooked() {
