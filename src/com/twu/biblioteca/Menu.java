@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -23,7 +24,7 @@ public class Menu {
     }
 
     public void ChooseMenuOption() {
-        int menuOption = scanner.nextInt();
+        int menuOption = getScannerInt();
 
         switch (menuOption) {
             case 1: {
@@ -75,20 +76,20 @@ public class Menu {
         }
     }
 
-    public void printCheckedoutBooks(){
+    public void printCheckedOutBooks(){
         ArrayList<Book> books = bookController.listBooks();
-        int checkedoutBooks = 0;
+        int checkedOutBooks = 0;
 
         System.out.println();
 
         for (int i = 0; i<books.size(); i++) {
             if(books.get(i).isBooked()) {
                 System.out.println((i + 1) + " - " + books.get(i).getDetails());
-                checkedoutBooks++;
+                checkedOutBooks++;
             }
         }
 
-        if(checkedoutBooks == 0) {
+        if(checkedOutBooks == 0) {
             System.out.println("\nThere is no book left to return.");
         }
     }
@@ -96,9 +97,9 @@ public class Menu {
     public void checkoutBook(){
         printBooks();
         System.out.println("\n\nType the ID (integer) of the book you wanna checkout:");
-        int bookId = scanner.nextInt() - 1;
+        int bookId = getScannerInt();
 
-        Book bookCheckedOut = bookController.listBooks().get(bookId);
+        Book bookCheckedOut = bookController.listBooks().get(bookId - 1);
 
         try {
             bookController.checkoutBook(bookCheckedOut);
@@ -109,11 +110,11 @@ public class Menu {
     }
 
     public void returnBook(){
-        printCheckedoutBooks();
+        printCheckedOutBooks();
         System.out.println("\n\nType the ID (integer) of the book you wanna return:");
-        int bookId = scanner.nextInt() - 1;
+        int bookId = getScannerInt();
 
-        Book returnedBook = bookController.listBooks().get(bookId);
+        Book returnedBook = bookController.listBooks().get(bookId - 1);
 
         try {
             bookController.returnBook(returnedBook);
@@ -121,5 +122,22 @@ public class Menu {
         } catch (BookReservationException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    public int getScannerInt() {
+        int value = 0;
+        boolean loop = true;
+
+        while (loop) {
+            try {
+                value = scanner.nextInt();
+                loop = false;
+            } catch (InputMismatchException ex) {
+                System.out.println("\nType a valid value!");
+                scanner.next();
+            }
+        }
+
+        return value;
     }
 }
