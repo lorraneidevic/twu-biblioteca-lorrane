@@ -24,7 +24,7 @@ public class Menu {
     }
 
     public void ChooseMenuOption() {
-        int menuOption = getScannerInt();
+        int menuOption = getScannerNextIntAndValidateIfIsValid();
 
         switch (menuOption) {
             case 1: {
@@ -46,8 +46,8 @@ public class Menu {
             }
 
             case 4: {
-                System.out.println("\nQuitting the app...");
-                System.exit(0);
+                quitApp();
+                break;
             }
 
             default: {
@@ -97,7 +97,7 @@ public class Menu {
     public void checkoutBook(){
         printBooks();
         System.out.println("\n\nType the ID (integer) of the book you wanna checkout:");
-        int bookId = getScannerInt();
+        int bookId = getScannerNextIntAndValidateIfIsValid();
 
         Book bookCheckedOut = bookController.listBooks().get(bookId - 1);
 
@@ -112,7 +112,7 @@ public class Menu {
     public void returnBook(){
         printCheckedOutBooks();
         System.out.println("\n\nType the ID (integer) of the book you wanna return:");
-        int bookId = getScannerInt();
+        int bookId = getScannerNextIntAndValidateIfIsValid();
 
         Book returnedBook = bookController.listBooks().get(bookId - 1);
 
@@ -124,7 +124,12 @@ public class Menu {
         }
     }
 
-    public int getScannerInt() {
+    public void quitApp() {
+        System.out.println("\nQuitting the app...");
+        System.exit(0);
+    }
+
+    public int getScannerNextIntAndValidateIfIsValid() {
         int value = 0;
         boolean loop = true;
 
