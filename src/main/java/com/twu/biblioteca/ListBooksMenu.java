@@ -24,6 +24,6 @@ public class ListBooksMenu implements Option {
 
     @Override
     public void getName() {
-
+        System.out.println("1 - List Books");
     }
 }

@@ -75,5 +75,10 @@ public class ListBooksMenuTest {
 
     @Test
     public void getName() {
+        //action
+        listBooksMenu.getName();
+
+        //assert
+        assertThat(outContent.toString(),containsString("1 - List Books"));
     }
 }
