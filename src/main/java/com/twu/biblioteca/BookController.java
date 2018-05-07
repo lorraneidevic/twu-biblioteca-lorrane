@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class BookController {
@@ -15,6 +16,19 @@ public class BookController {
 
     public ArrayList<Book> listBooks() {
         return books;
+    }
+
+    public ArrayList<Book> listAvailableBooks() {
+        ArrayList<Book> availableBooks = new ArrayList<>();
+        ArrayList<Book> allBooks = this.listBooks();
+
+        for(int i = 0; i < allBooks.size(); i++) {
+            if (!allBooks.get(i).isBooked()) {
+                availableBooks.add(allBooks.get(i));
+            }
+        }
+
+        return availableBooks;
     }
 
     public void checkoutBook(Book book) throws BookReservationException{

@@ -40,6 +40,27 @@ public class BookControllerTest {
     }
 
     @Test
+    public void shouldReturnAListOfAvailableBooks(){
+        //arrange
+        ArrayList<Book> books = new ArrayList<Book>();
+        books.add(new Book("TDD", "Kent Beck", 2000));
+        books.add(new Book("Clean Code", "Robert Cecil Martin", 2008));
+        books.add(new Book("Simon vs. the Homo Sapiens Agenda", "Becky Albertalli", 2015));
+        books.add(new Book("Wonder", "R.J. Palacio", 2012));
+
+        //action
+        ArrayList<Book> availableBooks = bookControllerTestClass.listAvailableBooks();
+
+        //asserts
+        assertEquals(books.size(), availableBooks.size());
+        assertEquals(books.get(0).getDetails(), availableBooks.get(0).getDetails());
+        assertEquals(books.get(1).getDetails(), availableBooks.get(1).getDetails());
+        assertEquals(books.get(2).getDetails(), availableBooks.get(2).getDetails());
+        assertEquals(books.get(3).getDetails(), availableBooks.get(3).getDetails());
+
+    }
+
+    @Test
     public void shouldCheckoutABook(){
         //arrange
         Book book = bookControllerTestClass.books.get(2);
