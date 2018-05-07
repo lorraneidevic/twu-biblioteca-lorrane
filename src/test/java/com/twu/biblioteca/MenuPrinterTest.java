@@ -24,7 +24,7 @@ public class MenuPrinterTest {
     private Option option;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         System.setOut(new PrintStream(outContent));
 
         option = mock(Option.class); //cria uma opcao qualquer de menu
