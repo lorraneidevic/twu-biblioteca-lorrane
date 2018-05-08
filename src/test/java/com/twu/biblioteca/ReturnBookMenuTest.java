@@ -11,12 +11,10 @@ import java.io.PrintStream;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 
-public class CheckoutMenuTest {
+public class ReturnBookMenuTest {
 
-    private CheckoutMenu checkoutMenu;
+    private ReturnBookMenu returnBookMenu;
     private BookController bookController;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
@@ -26,7 +24,7 @@ public class CheckoutMenuTest {
 
 //        bookController = mock(BookController.class);
         bookController = new BookController();
-        checkoutMenu = new CheckoutMenu(bookController);
+        returnBookMenu = new ReturnBookMenu(bookController);
     }
 
     @After
@@ -43,37 +41,18 @@ public class CheckoutMenuTest {
         System.setIn(in);
 
         //action
-        checkoutMenu.print();
+        returnBookMenu.print();
 
         //assert
-        assertThat(outContent.toString(), containsString("Thank you! Enjoy the book"));
-    }
-
-    @Test
-    public void shouldReturnAnIndexOutOfRangeException() {
-        //arrange
-        String input = "5";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
-        //action
-        try {
-            checkoutMenu.print();
-            fail( "A exception was expected here since we are trying to access an Index Out Of Bounds." );
-        } catch (IndexOutOfBoundsException expectedException) {
-            //assert
-            assertThat(outContent.toString(), containsString("1 - TDD"));
-        }
-
+        assertThat(outContent.toString(), containsString("There is no book left to return"));
     }
 
     @Test
     public void getName() {
         //action
-        checkoutMenu.getName();
+        returnBookMenu.getName();
 
         //assert
-        assertThat(outContent.toString(), containsString("2 - Checkout a Book"));
-
+        assertThat(outContent.toString(), containsString("3 - Return a Book"));
     }
 }

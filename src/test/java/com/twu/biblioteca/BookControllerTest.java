@@ -85,6 +85,16 @@ public class BookControllerTest {
     }
 
     @Test
+    public void shouldReturnUnavailableBooks(){
+
+        //action
+        bookControllerTestClass.printUnavailableBooks();
+
+        //assert
+        assertThat(outContent.toString(),containsString("There is no book left to return"));
+    }
+
+    @Test
     public void shouldCheckoutABook(){
         //arrange
         Book book = bookControllerTestClass.books.get(2);

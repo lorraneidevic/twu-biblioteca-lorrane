@@ -16,8 +16,8 @@ public class Menu {
     public void showMenu(){
         System.out.println("\n\nPlease choose one of the options in the menu below by typing its number:");
         System.out.println("1 - List Books");
-        System.out.println("2 - Checkout BookController");
-        System.out.println("3 - Return BookController");
+        System.out.println("2 - Checkout a Book");
+        System.out.println("3 - Return a Book");
         System.out.println("4 - Quit");
 
         ChooseMenuOption();

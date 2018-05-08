@@ -31,6 +31,19 @@ public class BookController {
         return availableBooks;
     }
 
+    public ArrayList<Book> listUnavailableBooks() {
+        ArrayList<Book> unavailableBooks = new ArrayList<>();
+        ArrayList<Book> allBooks = this.listBooks();
+
+        for(int i = 0; i < allBooks.size(); i++) {
+            if (allBooks.get(i).isBooked()) {
+                unavailableBooks.add(allBooks.get(i));
+            }
+        }
+
+        return unavailableBooks;
+    }
+
     public void printAvailableBooks() {
         ArrayList<Book> availableBooks = listAvailableBooks();
 
@@ -39,6 +52,18 @@ public class BookController {
         } else {
             for (int i = 0; i < availableBooks.size(); i++) {
                 System.out.println((i + 1) + " - " + availableBooks.get(i).getName());
+            }
+        }
+    }
+
+    public void printUnavailableBooks() {
+        ArrayList<Book> unavailableBooks = listUnavailableBooks();
+
+        if(unavailableBooks.size() == 0) {
+            System.out.println("\nThere is no book left to return.");
+        } else {
+            for (int i = 0; i < unavailableBooks.size(); i++) {
+                System.out.println((i + 1) + " - " + unavailableBooks.get(i).getName());
             }
         }
     }

@@ -1,26 +1,31 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CheckoutMenu implements Option {
+public class ReturnBookMenu implements Option {
+
     private BookController bookController;
 
-    public CheckoutMenu(BookController bookController) {
+    public ReturnBookMenu(BookController bookController) {
         this.bookController = bookController;
     }
 
     @Override
-    public void print(){
-        bookController.printAvailableBooks();
+    public void print() {
+        bookController.printUnavailableBooks();
 
         int bookId = getBookId();
 
         try {
-            checkoutBook(bookId);
+            returnBook(bookId);
         } catch (BookReservationException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @Override
+    public void getName() {
+        System.out.println("3 - Return a Book");
     }
 
     private int getBookId(){
@@ -31,23 +36,16 @@ public class CheckoutMenu implements Option {
         return scanner.nextInt();
     }
 
-    private void checkoutBook(int bookId) throws BookReservationException, IndexOutOfBoundsException{
-        Book bookCheckedOut = bookController.listBooks().get(bookId - 1);
+    private void returnBook(int bookId) throws BookReservationException, IndexOutOfBoundsException{
+        Book bookReturned = bookController.listBooks().get(bookId - 1);
 
         try {
-            bookController.checkoutBook(bookCheckedOut);
-            System.out.println("\nThank you! Enjoy the book");
+            bookController.returnBook(bookReturned);
+            System.out.println("\nThank you for returning the book");
         } catch (BookReservationException ex) {
             System.out.println(ex.getMessage());
         } catch (IndexOutOfBoundsException ex) {
             System.out.println(ex.getMessage());
         }
-    }
-
-
-
-    @Override
-    public void getName() {
-        System.out.println("2 - Checkout a Book");
     }
 }
