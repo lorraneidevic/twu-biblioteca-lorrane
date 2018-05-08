@@ -31,6 +31,18 @@ public class BookController {
         return availableBooks;
     }
 
+    public void printAvailableBooks() {
+        ArrayList<Book> availableBooks = listAvailableBooks();
+
+        if(availableBooks.size() == 0) {
+            System.out.println("\nThere is no book left to checkout.");
+        } else {
+            for (int i = 0; i < availableBooks.size(); i++) {
+                System.out.println((i + 1) + " - " + availableBooks.get(i).getName());
+            }
+        }
+    }
+
     public void checkoutBook(Book book) throws BookReservationException{
         int index = books.indexOf(book);
 

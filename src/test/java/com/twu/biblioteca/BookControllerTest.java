@@ -1,22 +1,36 @@
 package com.twu.biblioteca;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
+import static org.mockito.Mockito.when;
 
 public class BookControllerTest {
     private BookController bookControllerTestClass;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Before
     public void setUp() throws Exception{
+        System.setOut(new PrintStream(outContent));
         bookControllerTestClass = new BookController();
+    }
+
+    @After
+    public void tearDown() {
+        outContent.reset();
+        System.setOut(System.out);
     }
 
     @Test
@@ -58,6 +72,16 @@ public class BookControllerTest {
         assertEquals(books.get(2).getDetails(), availableBooks.get(2).getDetails());
         assertEquals(books.get(3).getDetails(), availableBooks.get(3).getDetails());
 
+    }
+
+    @Test
+    public void shouldReturnAvailableBooks(){
+
+        //action
+        bookControllerTestClass.printAvailableBooks();
+
+        //assert
+        assertThat(outContent.toString(),containsString("1 - TDD"));
     }
 
     @Test

@@ -11,15 +11,7 @@ public class ListBooksMenu implements Option {
 
     @Override
     public void print() {
-        ArrayList<Book> availableBooks = bookController.listAvailableBooks();
-
-        if(availableBooks.size() == 0) {
-            System.out.println("\nThere is no book left to checkout.");
-        } else {
-            for (int i = 0; i < availableBooks.size(); i++) {
-                System.out.println((i + 1) + " - " + availableBooks.get(i).getName());
-            }
-        }
+        bookController.printAvailableBooks();
     }
 
     @Override
