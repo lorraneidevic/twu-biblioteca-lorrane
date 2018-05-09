@@ -1,17 +1,15 @@
 package com.twu.biblioteca.view;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class MenuPrinter {
     List<Option> listOptions;
-    Scanner scanner;
 
     public MenuPrinter(List<Option> listOptions) {
         this.listOptions = listOptions;
         this.listOptions.add(new QuitMenu());
-
-        scanner = new Scanner(System.in);
     }
 
     public void showMenu() {
@@ -24,15 +22,32 @@ public class MenuPrinter {
     }
 
     private void chooseMenu() {
-        Scanner s = new Scanner(System.in);
-
-        int menuOption = s.nextInt();
+        int menuOption = getScannerNextIntAndValidateIfIsValid();
 
         listOptions.get(menuOption-1).print();
 
-        System.out.println("\n\n");
+        System.out.println("\n");
         if(menuOption != listOptions.size()) {
             showMenu();
         }
+    }
+
+    public int getScannerNextIntAndValidateIfIsValid() {
+        Scanner scanner = new Scanner(System.in);
+
+        int value = 0;
+        boolean loop = true;
+
+        while (loop) {
+            try {
+                value = scanner.nextInt();
+                loop = false;
+            } catch (InputMismatchException ex) {
+                System.out.println("\nType a valid value!");
+                scanner.next();
+            }
+        }
+
+        return value;
     }
 }

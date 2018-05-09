@@ -65,20 +65,6 @@ public class BookControllerTest {
     }
 
     @Test
-    public void shouldReturnAvailableBooks(){
-        bookControllerTestClass.printAvailableBooks();
-
-        assertThat(outContent.toString(),containsString("1 - TDD"));
-    }
-
-    @Test
-    public void shouldReturnUnavailableBooks(){
-        bookControllerTestClass.printUnavailableBooks();
-
-        assertThat(outContent.toString(),containsString("There is no book left to return"));
-    }
-
-    @Test
     public void shouldCheckoutABook(){
         Book book = bookControllerTestClass.listBooks().get(2);
 

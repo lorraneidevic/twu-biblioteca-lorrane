@@ -1,6 +1,9 @@
 package com.twu.biblioteca.view;
 
+import com.twu.biblioteca.domain.Book;
 import com.twu.biblioteca.domain.BookController;
+
+import java.util.ArrayList;
 
 public class ListBooksMenu implements Option {
     private BookController bookController;
@@ -11,7 +14,26 @@ public class ListBooksMenu implements Option {
 
     @Override
     public void print() {
-        bookController.printAvailableBooks();
+        printAvailableBooks();
+    }
+
+    public void printAvailableBooks() {
+        ArrayList<Book> books = bookController.listBooks();
+
+        if(hasAvailableBooks()) {
+            System.out.println("\nAvailable books:");
+            for (int i = 0; i < books.size(); i++) {
+                if(!books.get(i).isBooked()) {
+                    System.out.println((i + 1) + " - " + books.get(i).getName());
+                }
+            }
+        } else {
+            System.out.println("\nThere is no book left to checkout.");
+        }
+    }
+
+    private boolean hasAvailableBooks(){
+        return bookController.listAvailableBooks().size() > 0;
     }
 
     @Override
