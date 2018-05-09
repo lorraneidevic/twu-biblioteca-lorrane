@@ -1,6 +1,9 @@
 package com.twu.biblioteca;
 
-import java.lang.reflect.Array;
+import com.twu.biblioteca.domain.Book;
+import com.twu.biblioteca.domain.BookController;
+import com.twu.biblioteca.domain.BookReservationException;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;

@@ -1,13 +1,27 @@
 package com.twu.biblioteca;
 
-import java.util.Scanner;
+import com.twu.biblioteca.domain.BookController;
+import com.twu.biblioteca.view.*;
+
+import java.util.ArrayList;
 
 public class BibliotecaApp {
-    private static Menu menu = new Menu();
-    public static void main(String[] args) {
-        System.out.println("\n------------------ Welcome to Biblioteca - Bangalore Public Library ------------------");
 
-        menu.showMenu();
+    private static MenuPrinter menuPrinter;
+
+    public static void main(String[] args) {
+        System.out.println("\n------------------ Welcome to Biblioteca - Bangalore Public Library ------------------");//menu printer
+
+        BookController bookController = new BookController();
+        ArrayList<Option> menus = new ArrayList<Option>();
+
+        menus.add(new ListBooksMenu(bookController));
+        menus.add(new CheckoutMenu(bookController));
+        menus.add(new ReturnBookMenu(bookController));
+
+        menuPrinter = new MenuPrinter(menus);
+
+        menuPrinter.showMenu();
     }
 
 
