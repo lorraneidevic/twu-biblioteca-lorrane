@@ -1,7 +1,5 @@
 package com.twu.biblioteca.view;
 
-import com.twu.biblioteca.domain.BookReservationException;
-
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;

@@ -1,5 +1,8 @@
-package com.twu.biblioteca.domain;
+package com.twu.biblioteca.domain.book;
 
+import com.twu.biblioteca.domain.book.Book;
+import com.twu.biblioteca.domain.book.BookController;
+import com.twu.biblioteca.domain.book.BookReservationException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +11,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;

@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.domain.BookController;
+import com.twu.biblioteca.domain.book.BookController;
 import com.twu.biblioteca.view.*;
 
 import java.util.ArrayList;

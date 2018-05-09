@@ -1,7 +1,6 @@
 package com.twu.biblioteca.view;
 
-import com.twu.biblioteca.domain.BookController;
-import com.twu.biblioteca.view.CheckoutMenu;
+import com.twu.biblioteca.domain.book.BookController;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
