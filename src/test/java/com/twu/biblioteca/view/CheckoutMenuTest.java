@@ -55,9 +55,9 @@ public class CheckoutMenuTest {
 
         try {
             checkoutMenu.print();
-            fail( "A exception was expected here since we are trying to access an Index Out Of Bounds." );
+            assertThat(outContent.toString(), containsString("That is not a valid book to return"));
         } catch (IndexOutOfBoundsException expectedException) {
-            assertThat(outContent.toString(), containsString("1 - TDD"));
+            fail("Expection should be treated correctly");
         }
 
     }

@@ -53,15 +53,14 @@ public class ReturnBookMenu implements Option {
     }
 
     private void returnBook(int bookId) throws BookReservationException, IndexOutOfBoundsException{
-        Book bookReturned = bookController.listBooks().get(bookId - 1);
-
         try {
+            Book bookReturned = bookController.listBooks().get(bookId - 1);
             bookController.returnBook(bookReturned);
             System.out.println("\nThank you for returning the book");
         } catch (BookReservationException ex) {
             System.out.println(ex.getMessage());
         } catch (IndexOutOfBoundsException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("That is not a valid book to return");
         }
     }
 

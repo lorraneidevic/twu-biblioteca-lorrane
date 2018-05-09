@@ -1,5 +1,7 @@
 package com.twu.biblioteca.view;
 
+import com.twu.biblioteca.domain.BookReservationException;
+
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -21,13 +23,19 @@ public class MenuPrinter {
         chooseMenu();
     }
 
-    private void chooseMenu() {
+    private void chooseMenu()  throws IndexOutOfBoundsException{
         int menuOption = getScannerNextIntAndValidateIfIsValid();
 
-        listOptions.get(menuOption-1).print();
+        try {
+            listOptions.get(menuOption - 1).print();
 
-        System.out.println("\n");
-        if(menuOption != listOptions.size()) {
+
+            System.out.println("\n");
+            if (menuOption != listOptions.size()) {
+                showMenu();
+            }
+        } catch (IndexOutOfBoundsException ex) {
+            System.out.println("\nThis is not a valid option.\n");
             showMenu();
         }
     }

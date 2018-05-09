@@ -22,11 +22,7 @@ public class CheckoutMenu implements Option {
         if(hasAvailableBooks()) {
             int bookId = getScannerNextIntAndValidateIfIsValid();
 
-            try {
-                checkoutBook(bookId);
-            } catch (BookReservationException ex) {
-                System.out.println(ex.getMessage());
-            }
+            checkoutBook(bookId);
         }
     }
 
@@ -51,16 +47,15 @@ public class CheckoutMenu implements Option {
 
     }
 
-    private void checkoutBook(int bookId) throws BookReservationException, IndexOutOfBoundsException{
-        Book bookCheckedOut = bookController.listBooks().get(bookId - 1);
-
+    private void checkoutBook(int bookId) throws IndexOutOfBoundsException{
         try {
+            Book bookCheckedOut = bookController.listBooks().get(bookId - 1);
             bookController.checkoutBook(bookCheckedOut);
             System.out.println("\nThank you! Enjoy the book");
         } catch (BookReservationException ex) {
             System.out.println(ex.getMessage());
         } catch (IndexOutOfBoundsException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("That is not a valid book to return");
         }
     }
 
