@@ -30,6 +30,13 @@ public class QuitMenuTest {
     }
 
     @Test
+    public void print() {
+        quitMenu.print();
+
+        assertThat(outContent.toString(), containsString("Quitting the app..."));
+    }
+
+    @Test
     public void getName() {
         String menuName = quitMenu.getName();
 

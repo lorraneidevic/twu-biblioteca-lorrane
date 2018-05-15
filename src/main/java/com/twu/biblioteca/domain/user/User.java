@@ -26,16 +26,12 @@ public class User {
         return this;
     }
 
-    public String getName() {
-        return name;
+    public String getCostumerInformation() {
+        return name + " - " + emailAddress + " - " + phoneNumber;
     }
 
     public String getEmailAddress() {
         return emailAddress;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
     }
 
     public String getLibraryNumber() {

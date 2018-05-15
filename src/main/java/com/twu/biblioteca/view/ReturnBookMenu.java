@@ -20,7 +20,7 @@ public class ReturnBookMenu implements Option {
     public void print() {
         printUnavailableBooks();
 
-        if(hasUnvailableBooks()) {
+        if(hasUnavailableBooks()) {
             int bookId = getScannerNextIntAndValidateIfIsValid();
 
             try {
@@ -67,7 +67,7 @@ public class ReturnBookMenu implements Option {
     public void printUnavailableBooks() {
         ArrayList<Book> books = bookController.listBooks();
 
-        if(hasUnvailableBooks()) {
+        if(hasUnavailableBooks()) {
             System.out.println("\nAvailable books to return:");
             for (int i = 0; i < books.size(); i++) {
                 if(books.get(i).isBooked()) {
@@ -79,7 +79,7 @@ public class ReturnBookMenu implements Option {
         }
     }
 
-    private boolean hasUnvailableBooks(){
+    private boolean hasUnavailableBooks(){
         return bookController.listUnavailableBooks().size() > 0;
     }
 

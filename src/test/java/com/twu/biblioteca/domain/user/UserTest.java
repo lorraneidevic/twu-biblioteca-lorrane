@@ -8,13 +8,6 @@ public class UserTest {
     User user;
 
     @Test
-    public void shouldReturnLibrarianName() {
-        user = new User().createLibrarian("Lorrane");
-
-        assertEquals("Lorrane", user.getName());
-    }
-
-    @Test
     public void shouldReturnLibrarianPassword() {
         user = new User().createLibrarian("Lorrane");
 
@@ -29,9 +22,23 @@ public class UserTest {
     }
 
     @Test
-    public void shouldReturnCustomerPhoneNumber() {
-        user = new User().createCustomer("Lorrane", "lidevic@thoughtworks.com", "(31) 99850-4794");
+    public void shouldReturnCustomerEmailAddress() {
+        user = new User().createCustomer("Lorrane", "lidevic@thoughtworks.com", "(31) 99999-9999");
 
-        assertEquals("123-1234", user.getLibraryNumber());
+        assertEquals("lidevic@thoughtworks.com", user.getEmailAddress());
+    }
+
+    @Test
+    public void shouldReturnCostumerInformation() {
+        user = new User().createCustomer("Lorrane", "lidevic@thoughtworks.com", "(31) 99999-9999");
+
+        assertEquals("Lorrane - lidevic@thoughtworks.com - (31) 99999-9999", user.getCostumerInformation());
+    }
+
+    @Test
+    public void shouldReturnIfIsLibrarian() {
+        user = new User().createLibrarian("Lorrane");
+
+        assertEquals(true, user.isLibrarian());
     }
 }

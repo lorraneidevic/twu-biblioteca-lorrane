@@ -50,4 +50,11 @@ public class ReturnBookMenuTest {
 
         assertThat(menuName, containsString("Return a Book"));
     }
+
+    @Test
+    public void shouldPrintUnavailableBooks() {
+        returnBookMenu.printUnavailableBooks();
+
+        assertThat(outContent.toString(), containsString("There is no book left to return"));
+    }
 }

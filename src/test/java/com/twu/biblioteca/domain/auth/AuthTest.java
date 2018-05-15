@@ -16,7 +16,7 @@ public class AuthTest {
 
     @Test
     public void canCustomerLogin() {
-        User user = new User().createCustomer("Lorrane", "lidevic@thoughtworks.com", "(31) 99850-4794");
+        User user = new User().createCustomer("Lorrane", "lidevic@thoughtworks.com", "(31) 99999-9999");
 
         boolean didUserLoggedIn = auth.canUserLogin(user);
 
