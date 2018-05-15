@@ -16,7 +16,7 @@ public class AuthTest {
 
     @Test
     public void canCustomerLogin() {
-        User user = new User().createCustomer("Lorrane", "lidevic@thoughtworks.com", "(31) 99999-9999");
+        User user = new User().createCustomer("Lorrane", "lidevic@thoughtworks.com", "(31) 99999-9999", "12345");
 
         boolean didUserLoggedIn = auth.canUserLogin(user);
 
@@ -25,7 +25,7 @@ public class AuthTest {
 
     @Test
     public void canLibrarianLogin() {
-        User user = new User().createLibrarian("Lorrane");
+        User user = new User().createLibrarian("123-1234", "12345");
 
         boolean didUserLoggedIn = auth.canUserLogin(user);
 

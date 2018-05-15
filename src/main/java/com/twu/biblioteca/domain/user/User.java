@@ -8,20 +8,19 @@ public class User {
     private String password;
     private boolean isLibrarian = false;
 
-    public User createLibrarian(String name) {
-        this.name = name;
+    public User createLibrarian(String libraryNumber, String password) {
         this.isLibrarian = true;
-        this.libraryNumber = "123-1234";
-        this.password = "12345";
+        this.libraryNumber = libraryNumber;
+        this.password = password;
 
         return this;
     }
 
-    public User createCustomer(String name, String emailAddress, String phoneNumber) {
+    public User createCustomer(String name, String emailAddress, String phoneNumber, String password) {
         this.name = name;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
-        this.password = "12345";
+        this.password = password;
 
         return this;
     }
