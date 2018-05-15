@@ -85,11 +85,9 @@ public class MovieControllerTest {
         try {
             movieController.returnMovie(movie);
 
-            ArrayList<Movie> unavailableMovies = movieController.listUnavailableMovies();
-
-            assertEquals(movie.getName(), unavailableMovies.get(0).getName());
+            fail("Should throw an exception here since there isn't a movie available");
         } catch (MovieReservationException ex) {
-            fail(ex.getMessage());
+            assertEquals("That movie is not available", ex.getMessage());
         }
     }
 }
