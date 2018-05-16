@@ -1,5 +1,6 @@
 package com.twu.biblioteca.view;
 
+import com.twu.biblioteca.domain.user.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,16 +31,10 @@ public class CustomerLoginMenuTest {
     }
 
     @Test
-    public void print() {
-//        String input1 = "lidevic@thoughtworks.com";
-//        InputStream in1 = new ByteArrayInputStream(input1.getBytes());
-//        System.setIn(in1);
+    public void shouldValidateLogin() {
+        User user = new User().createCustomer("Lorrane", "lidevic@thoughtworks.com", "(31) 99999-9999", "12345");
 
-//        String input2 = "12345";
-//        InputStream in2 = new ByteArrayInputStream(input2.getBytes());
-//        System.setIn(in2);
-
-        customerLoginMenu.print();
+        customerLoginMenu.validateLogin(user);
 
         assertThat(outContent.toString(), containsString("You're logged in"));
     }

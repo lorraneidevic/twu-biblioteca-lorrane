@@ -31,7 +31,7 @@ public class CustomerLoginMenu implements Option {
         return new User().createCustomer("Lorrane", emailAddress, "(31) 99999-9999", password);
     }
 
-    private void validateLogin(User user) {
+    public void validateLogin(User user) {
         if(auth.canUserLogin(user)) {
             System.out.println("You're logged in!");
         } else {
