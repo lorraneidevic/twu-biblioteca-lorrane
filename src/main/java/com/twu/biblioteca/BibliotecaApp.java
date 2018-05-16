@@ -13,15 +13,25 @@ public class BibliotecaApp {
         System.out.println("\n------------------ Welcome to Biblioteca - Bangalore Public Library ------------------");//menu printer
 
         BookController bookController = new BookController();
-        ArrayList<Option> menus = new ArrayList<Option>();
 
-        menus.add(new ListBooksMenu(bookController));
-        menus.add(new CheckoutMenu(bookController));
-        menus.add(new ReturnBookMenu(bookController));
+        ArrayList<Option> loginMenus = new ArrayList<>();
 
-        menuPrinter = new MenuPrinter(menus);
+        loginMenus.add(new CustomerLoginMenu());
+        loginMenus.add(new LibrarianLoginMenu());
+
+        menuPrinter = new MenuPrinter(loginMenus);
 
         menuPrinter.showMenu();
+
+//        ArrayList<Option> menus = new ArrayList<Option>();
+//
+//        menus.add(new ListBooksMenu(bookController));
+//        menus.add(new CheckoutMenu(bookController));
+//        menus.add(new ReturnBookMenu(bookController));
+//
+//        menuPrinter = new MenuPrinter(menus);
+//
+//        menuPrinter.showMenu();
     }
 
 

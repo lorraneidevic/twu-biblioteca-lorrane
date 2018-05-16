@@ -1,5 +1,6 @@
 package com.twu.biblioteca.view;
 
+import com.twu.biblioteca.domain.user.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,10 +12,14 @@ import java.io.PrintStream;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class LibrarianLoginMenuTest {
     private LibrarianLoginMenu librarianLoginMenu;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private User user;
+
 
     @Before
     public void setUp(){
@@ -30,17 +35,13 @@ public class LibrarianLoginMenuTest {
     }
 
     @Test
-    public void print() {
-//        String input1 = "123-1234";
-//        InputStream in1 = new ByteArrayInputStream(input1.getBytes());
-//        System.setIn(in1);
-//        String input2 = "12345";
-//        InputStream in2 = new ByteArrayInputStream(input2.getBytes());
-//        System.setIn(in2);
-//
-//        librarianLoginMenu.print();
-//
-//        assertThat(outContent.toString(), containsString("You're logged in"));
+    public void shouldValidateLogin() {
+        User user = new User().createLibrarian("123-1234", "12345");
+
+        librarianLoginMenu.validateLogin(user);
+
+        assertThat(outContent.toString(), containsString("You're logged in"));
+//        assertEquals("123-1234", user.getLibraryNumber());
     }
 
     @Test

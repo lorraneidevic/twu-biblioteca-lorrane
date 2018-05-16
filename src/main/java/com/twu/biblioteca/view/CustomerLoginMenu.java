@@ -35,7 +35,7 @@ public class CustomerLoginMenu implements Option {
         if(auth.canUserLogin(user)) {
             System.out.println("You're logged in!");
         } else {
-            System.out.println("Email Address or Password incorrect.");
+            System.out.println("Email Address or Password incorrect." + user.getEmailAddress() + " - " + user.getPassword());
             print();
         }
     }

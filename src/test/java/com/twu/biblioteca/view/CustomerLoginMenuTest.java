@@ -34,13 +34,14 @@ public class CustomerLoginMenuTest {
 //        String input1 = "lidevic@thoughtworks.com";
 //        InputStream in1 = new ByteArrayInputStream(input1.getBytes());
 //        System.setIn(in1);
+
 //        String input2 = "12345";
 //        InputStream in2 = new ByteArrayInputStream(input2.getBytes());
 //        System.setIn(in2);
-//
-//        customerLoginMenu.print();
-//
-//        assertThat(outContent.toString(), containsString("You're logged in"));
+
+        customerLoginMenu.print();
+
+        assertThat(outContent.toString(), containsString("You're logged in"));
     }
 
     @Test

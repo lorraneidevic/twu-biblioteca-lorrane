@@ -14,7 +14,7 @@ public class Auth {
     }
 
     private boolean canLibrarianLogIn(User user) {
-        if(user.getLibraryNumber() == "123-1234" && user.getPassword()=="12345") {
+        if(user.getLibraryNumber().trim().equals("123-1234") && user.getPassword().trim().equals("12345")) {
             return true;
         }
 
@@ -22,7 +22,7 @@ public class Auth {
     }
 
     private boolean canCustomerLogIn(User user) {
-        if(user.getEmailAddress() == "lidevic@thoughtworks.com" && user.getPassword()=="12345") {
+        if(user.getEmailAddress().trim().equals("lidevic@thoughtworks.com") && user.getPassword().trim() == "12345") {
             return true;
         }
 

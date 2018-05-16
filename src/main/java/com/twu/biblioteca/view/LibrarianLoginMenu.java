@@ -31,7 +31,7 @@ public class LibrarianLoginMenu implements Option {
         return new User().createLibrarian(librarianNumber, password);
     }
 
-    private void validateLogin(User user) {
+    public void validateLogin(User user) {
         if(auth.canUserLogin(user)) {
             System.out.println("You're logged in!");
         } else {
