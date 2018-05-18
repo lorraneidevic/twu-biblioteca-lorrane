@@ -1,12 +1,17 @@
 package com.twu.biblioteca.domain.book;
 
+import com.twu.biblioteca.domain.auth.Auth;
+import com.twu.biblioteca.domain.user.User;
+
 import java.util.ArrayList;
 
 public class BookController {
     ArrayList<Book> books = new ArrayList<Book>();
-
+    private Auth auth;
 
     public BookController() {
+        auth = new Auth();
+
         books.add(new Book("TDD", "Kent Beck", 2000));
         books.add(new Book("Clean Code", "Robert Cecil Martin", 2008));
         books.add(new Book("Simon vs. the Homo Sapiens Agenda", "Becky Albertalli", 2015));
@@ -50,7 +55,20 @@ public class BookController {
             throw new BookReservationException("That book is not available");
         } else {
             books.get(index).book();
+            books.get(index).setUserWhoCheckedOut(auth.getLoggedUser());
         }
+    }
+
+    public ArrayList<User> whoCheckedOutABook() {
+        ArrayList<User> users = new ArrayList<>();//todos que checkaram um livro
+
+        for(int i = 0; i < books.size(); i++) {
+            if (books.get(i).getUserWhoCheckedOut() != null) {
+                users.add(books.get(i).getUserWhoCheckedOut());
+            }
+        }
+
+        return users;
     }
 
     public void returnBook(Book book) throws BookReservationException{

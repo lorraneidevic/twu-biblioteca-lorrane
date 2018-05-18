@@ -7,7 +7,7 @@ public class MovieController {
 
     public MovieController() {
         movies.add(new Movie("Wonder Woman", 2017, "Patty Jenkins", 9));
-        movies.add(new Movie("The Greatest Showman", 2017, "Michael Gracey", 7));
+        movies.add(new Movie("The Greatest Showman", 2017, "Michael Gracey", 0));
         movies.add(new Movie("Tomb Raider", 2018, "Roar Uthaug", 8));
         movies.add(new Movie("Wonder", 2017, "Stephen Chbosky", 10));
     }

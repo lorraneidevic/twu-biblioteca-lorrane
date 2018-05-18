@@ -1,6 +1,7 @@
 package com.twu.biblioteca.domain.user;
 
 public class User {
+
     private String name;
     private String emailAddress;
     private String phoneNumber;
@@ -9,6 +10,9 @@ public class User {
     private boolean isLibrarian = false;
 
     public User createLibrarian(String libraryNumber, String password) {
+        this.name = "Librarian";
+        this.emailAddress = "librarian@thoughtworks.com";
+        this.phoneNumber = "(31) 99999-9999";
         this.isLibrarian = true;
         this.libraryNumber = libraryNumber;
         this.password = password;
@@ -43,5 +47,9 @@ public class User {
 
     public boolean isLibrarian() {
         return isLibrarian;
+    }
+
+    public String getName() {
+        return name;
     }
 }

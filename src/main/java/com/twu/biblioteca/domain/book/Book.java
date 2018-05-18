@@ -1,8 +1,12 @@
 package com.twu.biblioteca.domain.book;
 
+import com.twu.biblioteca.domain.user.User;
+
 public class Book {
     private String name;
     private String author;
+
+    private User userWhoCheckedOut;
     private int year;
     private boolean booked = false;
 
@@ -30,5 +34,13 @@ public class Book {
 
     public void unbook() {
         this.booked = false;
+    }
+
+    public void setUserWhoCheckedOut(User user) {
+        this.userWhoCheckedOut = user;
+    }
+
+    public User getUserWhoCheckedOut() {
+        return userWhoCheckedOut;
     }
 }

@@ -1,5 +1,8 @@
 package com.twu.biblioteca.view;
 
+import com.twu.biblioteca.domain.auth.Auth;
+import com.twu.biblioteca.domain.book.BookController;
+import com.twu.biblioteca.domain.movie.MovieController;
 import com.twu.biblioteca.domain.user.User;
 import org.junit.After;
 import org.junit.Before;
@@ -19,13 +22,20 @@ public class LibrarianLoginMenuTest {
     private LibrarianLoginMenu librarianLoginMenu;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private User user;
+    Auth auth;
+    BookController bookController;
+    MovieController movieController;
 
 
     @Before
     public void setUp(){
         System.setOut(new PrintStream(outContent));
 
-        librarianLoginMenu = new LibrarianLoginMenu();
+        this.auth = new Auth();
+        this.movieController = new MovieController();
+        this.bookController = new BookController();
+
+        librarianLoginMenu = new LibrarianLoginMenu(auth, movieController, bookController);
     }
 
     @After
@@ -38,10 +48,9 @@ public class LibrarianLoginMenuTest {
     public void shouldValidateLogin() {
         User user = new User().createLibrarian("123-1234", "12345");
 
-        librarianLoginMenu.validateLogin(user);
+        boolean result = librarianLoginMenu.validateLogin(user);
 
         assertThat(outContent.toString(), containsString("You're logged in"));
-//        assertEquals("123-1234", user.getLibraryNumber());
     }
 
     @Test
